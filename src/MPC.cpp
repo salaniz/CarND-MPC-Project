@@ -62,7 +62,7 @@ class FG_eval {
 
       // Calculate target speed depending on curvature of the road (fitted polynomial)
       AD<double> x = dt * t;
-      AD<double> curve = CppAD::atan(coeffs[1] + 2 * coeffs[2] * x + 4 * coeffs[3] * x * x).abs_me();
+      AD<double> curve = CppAD::abs(CppAD::atan(coeffs[1] + 2 * coeffs[2] * x + 4 * coeffs[3] * x * x));
       // maximum curvature to be considered:
       double max_curvature = 0.25;
       if(curve > max_curvature) {
